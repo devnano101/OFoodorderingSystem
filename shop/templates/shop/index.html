@@ -1,6 +1,6 @@
 
 {% extends 'shop/basic.html' %}
-{% block title%} Home - Food Mania{% endblock %}
+{% block title%} Home - FoodWeb{% endblock %}
 {% block css %}
     .col-md-3
     {
@@ -49,6 +49,8 @@
 {% block body %}
     {% load static %}
 
+
+
     <div class="container">
         <!--Slideshow starts here -->
         {% for product, range, nSlides in allProds %}
@@ -63,7 +65,7 @@
                 </ul> -->
                 <div class="container carousel-inner no-padding">
                     <div class="carousel-item active">
-                         {% for i in product|slice:"0:4" %} 
+                         {% for i in product %} 
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <div class="card align-items-center" style="width: 18rem;">
                                 <img src='/media/{{i.image}}' class="card-img-top" alt="...">
@@ -99,10 +101,11 @@
 {% endblock %}
 
 {% block js %}
-    <script>
+    
+<script>
     // console.log({{request.user.id}});
     if (localStorage.getItem('cart') == null) {
-        var cart = {};
+         let cart = {};
     } else {
         cart = JSON.parse(localStorage.getItem('cart'));
         updateCart(cart);
@@ -110,7 +113,7 @@
 
     // If the add to cart button is clicked, add/increment the item
     $('.divpr').on('click', 'button.cart', function() {
-        var idstr = this.id.toString();
+         let idstr = this.id.toString();
         //console.log(idstr);
         if (cart[idstr] != undefined) {
             qty = cart[idstr][0] + 1;
@@ -128,11 +131,11 @@
     updatePopover(cart);
 
     function updatePopover(cart) {
-        var popStr = "";
-        popStr = popStr + "<div class='mx-2 my-2'>";
-        var i = 1;
-        var j = 0;
-        for(var item in cart) {
+        let popStr = "";
+        popStr = popStr + "<div class='mx-3 my-3'>";
+         let i = 1;
+         let j = 0;
+        for( let item in cart) {
             popStr = popStr + "<b>" + i + "</b>. ";
             popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 15) + "... (Qty: " + cart[item][0] + ')<br>';
             i = i + 1;
@@ -140,7 +143,7 @@
         }
         if(j == 0) {
             popStr = popStr + "<p><b> No item available in your cart </b></p><div class='mx-2 my-2'>";
-            popStr = popStr + "</div> <a href='/shop'><button class='btn btn-primary'>Add items</button></a> ";
+            popStr = popStr + "</div> <a href='/shop'><button class='btn btn-primary'>Add items</button></a> "; //redirect to shop page
         }
         else{
             popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id='checkout'>Checkout</button></a> <a href='/shop/'><button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button></a>  ";
@@ -151,7 +154,7 @@
 
     function clearCart() {
       cart = JSON.parse(localStorage.getItem('cart'));
-      for (var item in cart) {
+      for ( let item in cart) {
         document.getElementById('div' + item).innerHTML = '<button id="'+ item +'" class="btn btn-primary cart">Add to Cart</button>'
       }
       localStorage.clear();
@@ -161,8 +164,8 @@
 
     function updateCart(cart) {
         //console.log(cart);
-        var sum = 0;
-        for (var item in cart) {
+         let sum = 0;
+        for ( let item in cart) {
             sum = sum + cart[item][0];
             document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
         }
@@ -198,4 +201,5 @@
     document.getElementById('categoryList').innerHTML = '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a><div class="dropdown-menu" aria-labelledby="navbarDropdown" >{% for product, range, nSlides in allProds %}<a class="dropdown-item" href="/shop/search/?search={{product.0.category}}">{{product.0.category}}</a>{% endfor %}</div>';
 
     </script>
+
 {% endblock %}

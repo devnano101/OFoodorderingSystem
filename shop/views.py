@@ -1,8 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 
-# I have created this file - Darshan
-# from django.http import HttpResponse
+
 from .models import Product, Contact, Orders, OrderUpdate
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -10,8 +9,8 @@ from math import ceil
 from django.contrib.auth import authenticate, login, logout
 import json
 from django.views.decorators.csrf import csrf_exempt
-from PayTm import Checksum
-MERCHANT_KEY = 'kbzk1DSbJiV_O3p5';   # Your-Merchant-Key-Here
+# from PayTm import Checksum
+# MERCHANT_KEY = 'kbzk1DSbJiV_O3p5';   # Your-Merchant-Key-Here
 
 
 def index(request):
