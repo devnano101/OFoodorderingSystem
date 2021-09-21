@@ -13,36 +13,47 @@
     <title>{% block title%} {% endblock %}</title>
     <link rel = "icon" href ="http://127.0.0.1:8000/media/shop/images/icon.png" type = "image/x-icon">
     <style>
-      .popover-header {
+      /* .popover-header {
         background-color: #dfd7d7
+      } */
+
+      .nav-mod{
+        background-color: #f8f1b1
       }
 
-      
+      .submit-margin{
+        margin-right:150px;
+        width:150px;
+      }
+
+      #categoryList{
+        color: black;
+      }
 
 
       {% block css %} {% endblock %}
     </style>
   </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-lg nav-mod fixed-top">
       <div><a class="navbar-brand" href="/"><img src="http://127.0.0.1:8000/media/shop/images/foodwebLogo.png" alt="" style="width:220px; height: 70px;"></a></div>
       <button class="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse navbar-dark" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-dark" href="/shop">All Foods<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item dropdown" id="categoryList">
+          <li class="nav-item dropdown text-dark" id="categoryList">
 
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link text-dark" href="/shop/tracker">Tracker</a>
+            <a class="nav-link" href="/shop/tracker">Tracker</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="/shop/orderView/">Your Orders</a>
+            <a class="nav-link" href="/shop/orderView/">Your Orders</a>
           </li> -->
           <li class="nav-item">
             <a class="nav-link text-dark" href="/shop/about">About Us</a>
@@ -51,10 +62,10 @@
             <a class="nav-link text-dark" href="/shop/contact">Contact Us</a>
           </li>
         </ul>
-        <!-- <form method="get" action="/shop/search" class="form-inline my-2 my-lg-0 mx-3">
+        <form method="get" action="/shop/search" class="form-inline my-2 my-lg-0 mx-3">
           <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
+        </form>
         {% if user.is_authenticated %}
         <ul class="navbar-nav mr-2">
           <li class="nav-item dropdown">
@@ -80,6 +91,7 @@
 
 
 
+
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal"  tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -95,16 +107,15 @@
               {% csrf_token %}
               <div class="text-left my-2">
                   <b><label for="username">Username</label></b>
-                  <input class="form-control" id="loginusername" name="loginusername" placeholder="Enter Your Username" type="text" required pattern="^[a-z]{3,15}$">
+                  <input class="form-control" id="loginusername" name="loginusername" placeholder="Enter Your Username" type="text">
               </div>
               <div class="text-left my-2">
                   <b><label for="password">Password</label></b>
                   <input class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter Your Password" type="password" required data-toggle="password">
               </div>
               <div>
-                <button type="submit" class="btn btn-success col-md-4">Submit</button>
-                <div class="col-md-3"></div>
-                <a href="/shop/reset_password/" class="col-md-4 text-center" >Forgot password?</a>
+                <button type="submit" class="btn btn-success col-md-4 mr-2 ">Submit</button>
+                <a href="/shop/reset_password/" class=" text-center ml-5" >Forgot password?</a>
               </div>
               
             </form>
@@ -129,8 +140,8 @@
             <form action="/shop/signup/" method="post">{% csrf_token %}
               <div class="form-group">
                   <b><label for="username">Username</label></b>
-                  <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required pattern="^[a-z]{3,15}$">
-              </div>
+                  <input class="form-control" id="username" name="username" placeholder="Choose a unique Username" type="text" required pattern="^[a-z]{4,20}$">
+              </div> 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <b><label for="f_name">First Name:</label></b>
@@ -149,14 +160,14 @@
                 <b><label for="phone">Phone No:</label></b>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon">+91</span>
+                    <span class="input-group-text" id="basic-addon">+88</span>
                   </div>
                   <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required pattern="[0-9]{10}">
                 </div>
               </div>
               <div class="text-left my-2">
                   <b><label for="password">Password:</label></b>
-                  <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required data-toggle="password">
+                  <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password" required pattern="{5}" data-toggle="password">
               </div>
               <div class="text-left my-2">
                   <b><label for="password1">Renter Password:</label></b>

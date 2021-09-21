@@ -2,15 +2,31 @@
 {%load static%}
 {% block branding %}
 
-<h1 id="head">
-  <a href="http://127.0.0.1:8000/admin"><img src="http://127.0.0.1:8000/media/shop/images/logo.png" width="35" height="35" /></a>
-  Food Web
-</h1>
+
+{% comment %} <h1 id="head"> {% endcomment %}
+
+<a href="http://127.0.0.1:8000/admin"><img src="http://127.0.0.1:8000/media/shop/images/foodwebLogo.png" width="220" height="70" class="mx-auto d-block"/></a>
+  
+
+
+{% comment %} <h1 class="display-4">Welcome To FoodWeb Admin panel</h1><br>
+
+   <div class="row col-lg-12">
+    <a class="btn btn-primary col-lg-4 mx-4" href="/" role="button">Go to App</a>
+    <a class="btn btn-primary col-lg-4 ml-5" href="/admin" role="button">Employee</a>
+  </div> {% endcomment %}
+    
+
 
 {% endblock %}
 
 {% block extrastyle%}
 
 <link rel="stylesheet" href="{% static 'shop/assets/css/adminstyle.css'%}" />
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 
 {%endblock %}

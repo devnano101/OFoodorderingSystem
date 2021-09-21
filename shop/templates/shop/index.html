@@ -1,6 +1,6 @@
 
 {% extends 'shop/basic.html' %}
-{% block title%} Home - FoodWeb{% endblock %}
+{% block title%} Foods - FoodWeb{% endblock %}
 {% block css %}
     .col-md-3
     {
@@ -44,6 +44,10 @@
         position: relative;
         left: 174px;
     }
+
+    .margin-top{
+        margin-top: 150px;
+    }
 {% endblock %}
 
 {% block body %}
@@ -51,7 +55,7 @@
 
 
 
-    <div class="container">
+    <div class="container margin-top">
         <!--Slideshow starts here -->
         {% for product, range, nSlides in allProds %}
         <h3 class="my-4">{{product.0.category}}</h3>
@@ -109,7 +113,7 @@
     } else {
         cart = JSON.parse(localStorage.getItem('cart'));
         updateCart(cart);
-    }
+    } 
 
     // If the add to cart button is clicked, add/increment the item
     $('.divpr').on('click', 'button.cart', function() {

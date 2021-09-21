@@ -1,14 +1,20 @@
-{% extends 'shop/basic.html' %}
+{% comment %} {% extends 'shop/basic.html' %}
 
-{% block title%} {{product.product_name}} - Food Mania {% endblock %}
+{% block title%} {{product.product_name}} - foodwebLogo {% endblock %}
 {% block css %}
     #cont {
-        min-height : 553px;
+        min-height : 500px;
     }
+
+    .margin-top{
+        margin-top: 150px;
+    }
+
 {% endblock %}
 
 {% block body %}
-    <div>&nbsp;
+    
+    <div class="margin-top">&nbsp;
         <a href="/shop" class="active text-dark">
           <i class="fas fa-qrcode"></i>
           <span>All Food</span>
@@ -64,4 +70,4 @@
 
         document.getElementById("popcart").setAttribute('data-content', "<h5> Click <a href='/shop/checkout'><button class='btn btn-primary'>Here</button></a> to order </h5>");
     </script>
-{% endblock %}
+{% endblock %} {% endcomment %}
